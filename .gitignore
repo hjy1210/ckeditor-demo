@@ -26,9 +26,9 @@ build/Release
 # Dependency directories
 tmp
 node_modules
-ckeditor
-mathjax
-media
+ckeditor/
+mathjax/
+media/
 sessions
 dist
 jspm_packages
