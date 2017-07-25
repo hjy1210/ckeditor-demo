@@ -34,9 +34,5 @@ CKEDITOR.editorConfig = function( config ) {
 	config.format_tags = 'p;h1;h2;h3;pre';
 
 	// Simplify the dialog windows.
-  config.removeDialogTabs = 'image:advanced;link:advanced';
-  
-  //config.mathJaxLib = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML';
-  config.mathJaxLib = '/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML3';
-
+	config.removeDialogTabs = 'image:advanced;link:advanced';
 };

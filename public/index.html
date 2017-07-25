@@ -1,10 +1,18 @@
-## ckeditor with mathjax.js and mhchem.js
-1. Use [Online Builder](http://ckeditor.com/builder) to build standard ckeditor preset and mathematical formula,font,html5video,simple audio,list-style plugins with moono-lisa skin.
-2. Copy directory mathjax into root of website.
-3. In ckeditor/congig.js add line `config.mathJaxLib = '/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML3';`
+<!DOCTYPE html>
+<html>
 
-## html
-```
+<head>
+  <meta charset="utf-8">
+  <title>Practice CKEditor</title>
+  <script src="/ckeditor/ckeditor.js"></script>
+</head>
+
+<body>
+  Hello CKEDITOR
+  <script>
+    CKEDITOR.config.height = 180;
+  </script>
+
   <textarea cols="80" id="editor2" name="editor2" rows="30">	
     &lt;ul&gt;		
       &lt;li&gt;This is an &lt;strong&gt;unordered list&lt;/strong&gt;&lt;/li&gt;		
@@ -28,7 +36,7 @@
       customConfig: '/itemBodyConfig.js'
     });
   </script>
-  
+
   <div id="editor1" contenteditable="true">
     <h1>Inline Editing in Action!</h1>
     <p>The "div" element that contains this text is now editable.
@@ -40,19 +48,6 @@
       customConfig: '/itemBodyConfig.js'
     });
   </script>
-```
-## itemBodyConfig.js
-```
-  config.mathJaxLib = '/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML3';
-  config.font_names = '標楷體/標楷體;' + config.font_names;
-  config.stylesSet = 'default:/itemBodyStyle.js';
-```
+</body>
 
-## itemBodyStyl.js
-```
-CKEDITOR.stylesSet.add( 'default', [
-  ...
-  { name: 'Box', element: 'span', styles: { 'border': '1px solid black' } },
-  ...
-]);
-```
+</html>
