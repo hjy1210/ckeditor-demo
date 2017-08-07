@@ -26,6 +26,7 @@ build/Release
 # Dependency directories
 tmp
 node_modules
+build/
 ckeditor/
 mathjax/
 media/

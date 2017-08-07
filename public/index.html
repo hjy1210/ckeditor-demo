@@ -8,7 +8,9 @@
 </head>
 
 <body>
+  <p><a href="/qti/qtiEditor.html">qtiEditor</a></p>
   Hello CKEDITOR
+
   <script>
     CKEDITOR.config.height = 180;
   </script>
@@ -33,7 +35,7 @@
 	</textarea>
   <script>
     CKEDITOR.replace('editor2', {
-      customConfig: '/itemBodyConfig.js'
+      customConfig: '/js/itemBodyConfig.js'
     });
   </script>
 
@@ -45,9 +47,11 @@
     // Turn off automatic editor creation first.
     CKEDITOR.disableAutoInline = true;
     CKEDITOR.inline('editor1', {
-      customConfig: '/itemBodyConfig.js'
+      customConfig: '/js/itemBodyConfig.js'
     });
+
   </script>
+
 </body>
 
 </html>

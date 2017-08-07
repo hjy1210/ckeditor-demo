@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <script src="/ckeditor/ckeditor.js"></script>
+ <script src="/js/qtiitem.js"></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <div>
+      <div class="dropdown" style="display:inline-block">
+        <button style="margin:10px 5px" class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Append Component
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li class="dropdown-header">Dropdown header 1</li>
+          <li><button onclick="tryCreateChoiceInteraction()">choices</a></li>
+          <li><button >map gaps</a></li>
+          <li><button >inline gaps</a></li>
+          <li class="divider"></li>
+          <li class="dropdown-header">Dropdown header 2</li>
+          <li><a href="#">A</a></li>
+        </ul>
+      </div>
+      <button><a href="#">Page 1</a></button>
+      <button><a href="#">Page 2</a></button>
+      <button><a href="#">Page 3</a></button>
+    </div>
+    <div class="row">
+      <div class="col-md-9" id="content">
+        Content
+      </div>
+      <div class="col-md-3">
+        properties
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

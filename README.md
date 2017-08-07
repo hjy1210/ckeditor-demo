@@ -56,3 +56,11 @@ CKEDITOR.stylesSet.add( 'default', [
   ...
 ]);
 ```
+## qtiEditor.html
+用來編輯QtiItem
+
+## index2.html clinet2.jsx
+利用react-ckeditor-wrapper來實作react component with ckeditor features
+
+## index3.html index3.jsx Editor.jsx
+只用react, react-dom, ckeditor 實作react component with ckeditor features

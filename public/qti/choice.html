@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Practice CKEditor</title>
+  <script src="/ckeditor/ckeditor.js"></script>
+</head>
+
+<body>
+  試題編號:<input type="text" id='itemid' /><br/> 前題
+  <script>
+    CKEDITOR.config.height = 180;
+  </script>
+
+  <textarea cols="80" id="editorprompt" name="editorprompt" rows="30">	
+	</textarea>
+  <script>
+    CKEDITOR.replace('editorprompt', {
+      customConfig: '/js/itemBodyConfig.js'
+    });
+  </script>
+  選項數 <input type="number" min="2" name="choicecount" max="12" value="4" id="choicecount"  />
+  <input type="checkbox" id="multiple" />多選題
+  <button onclick="arrangeChoices()">安排選項位置</button><span id="correct"></span>
+  <div style="border: 1px solid black" id="editorchoices">
+  </div>
+  <button onclick="getXmlData()">GetXMLData</button>
+  <script>
+    var symbol="ABCDEFGHIJKL"
+    //var DOMParser = require('xmldom').DOMParser;
+    //var XMLSerializer = require('xmldom').XMLSerializer
+    function arrangeCheckbox(){
+      var parser = new DOMParser();
+      var correct=document.getElementById("correct")
+      var isMultiple=document.getElementById("multiple").checked
+      while (correct.firstChild) {
+        correct.removeChild(correct.firstChild);
+      }
+      var n = document.getElementById("choicecount").value
+      for (var i = 0; i < n; i++) {
+        var checkbox=document.createElement("input")
+        if (isMultiple) {
+          checkbox.setAttribute("type","checkbox")
+        }
+        else {
+          checkbox.setAttribute("type","radio")
+        }
+        checkbox.setAttribute("value",symbol.substr(i,1))
+        var text=document.createTextNode(symbol.substr(i,1))
+        correct.appendChild(checkbox)
+        correct.appendChild(text)
+      }
+    }
+    function arrangeChoices() {
+      var n = document.getElementById("choicecount").value
+      var div = document.getElementById('editorchoices')
+      while (div.firstChild) {
+        div.removeChild(div.firstChild);
+      }
+      for (var i = 0; i < n; i++) {
+        var c = document.createElement("div")
+        var id = `choice${i}`
+        c.setAttribute("id", id)
+        c.setAttribute("style", "border: 1px solid black")
+        c.setAttribute("contenteditable", "true")
+        c.innerText = symbol.substr(i,1)
+        div.appendChild(c)
+        CKEDITOR.disableAutoInline = true
+        CKEDITOR.inline(id, {
+          customConfig: '/js/itemBodyConfig.js'
+        });
+      }
+      arrangeCheckbox()
+    }
+    function getXmlData() {
+      var prompt = CKEDITOR.instances.editorprompt.getData()
+      var choices = []
+      var n = document.getElementById("choicecount").value
+      for (var i = 0; i < n; i++) {
+        choices.push(CKEDITOR.instances[`choice${i}`].getData())
+      }
+      console.log(prompt)
+      console.log(choices)
+      var itemid=document.getElementById("itemid").value
+      var text = '<?xml version="1.0" encoding="UTF-8"?>\n' +
+        '<assessmentItem ' +
+        'xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" ' +
+        'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
+        'xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" ' +
+        ' identifier="'+itemid+'" title="'+itemid +
+        '" adaptive="false" timeDependent="false"></assessmentItem>'
+      var parser = new DOMParser();
+      var xmlDoc = parser.parseFromString(text,"text/xml").documentElement;
+      var itembody= parser.parseFromString('<itemBody>'+prompt+'</itemBody>',"text/xml").documentElement
+      var choiceInteraction= parser.parseFromString('<choiceInteraction>'+'</choiceInteraction>',"text/xml").documentElement
+      for (var i=0;i<n;i++){
+        var simplechoice=parser.parseFromString('<simpleChoice>'+choices[i]+'</simpleChoice>',"text/xml").documentElement
+        choiceInteraction.appendChild(simplechoice)
+      }
+      itembody.appendChild(choiceInteraction)
+      xmlDoc.appendChild(itembody)
+      var str=new XMLSerializer().serializeToString(xmlDoc)
+      console.log(str)
+      //console.log(xmlDoc)
+      //var serializer=new XMLSerializer()
+      //console.log(xmlDoc.serializer())
+    }
+    // Turn off automatic editor creation first.
+    //CKEDITOR.disableAutoInline = true;
+    //CKEDITOR.inline('editor1', {
+    //  customConfig: '/js/itemBodyConfig.js'
+    //});
+  </script>
+</body>
+
+</html>

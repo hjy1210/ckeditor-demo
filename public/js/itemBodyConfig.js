@@ -41,6 +41,6 @@ CKEDITOR.editorConfig = function (config) {
 
   config.font_names = '標楷體/標楷體;' + config.font_names;
 
-  config.stylesSet = 'default:/itemBodyStyle.js';
+  config.stylesSet = 'default:/js/itemBodyStyle.js';
 
 };

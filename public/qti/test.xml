@@ -1,0 +1,18 @@
+<assessmentItem 
+  xmlns="http://www.imsglobal.org/xsd/imsqti_v2p1" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.imsglobal.org/xsd/imsqti_v2p1  http://www.imsglobal.org/xsd/qti/qtiv2p2/imsqti_v2p1.xsd" identifier="" title="" adaptive="false" timeDependent="false">
+  <itemBody>
+    <p>rrangeChoice</p>
+    <choiceInteraction>
+      <simpleChoice>
+        <p>A</p>
+      </simpleChoice>
+      <simpleChoice>
+        <p>B</p>
+      </simpleChoice>
+      <simpleChoice>
+        <p>C</p>
+      </simpleChoice>
+    </choiceInteraction>
+  </itemBody>
+</assessmentItem>

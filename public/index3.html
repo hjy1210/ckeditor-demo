@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Practice CKEditor</title>
+  <script src="/ckeditor/ckeditor.js"></script>
+</head>
+
+<body>
+  Hello
+  <div id="div1"></div>
+  HJY
+  <div id="div2"></div>
+  <script src="build/index3_bundle.js"></script>
+  <button type="button" onclick="extractData()">GetData</button>
+  <script>
+    function extractData() {
+      for (var p in CKEDITOR.instances) {
+        console.log(p, CKEDITOR.instances[p].getData())
+      }
+    }
+  </script>
+</body>
+
+</html>
